@@ -19,6 +19,11 @@ def about():
     about_data = data_store.get("about")
     return json.dumps(about_data)
 
+@app.route('/blog')
+def blog():
+    data = data_store.get("blogs")
+    return json.dumps(data)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
