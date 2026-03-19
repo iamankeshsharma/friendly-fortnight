@@ -1,12 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
 from dataStore import DataStore
-import json
+import json, os
 import dotenv
 dotenv.load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=dotenv.getenv("ORIGINS").split(","))
+CORS(app, origins=os.getenv("ORIGINS").split(","))
 data_store = DataStore()
 
 @app.route('/about')
