@@ -6,7 +6,12 @@ import dotenv
 dotenv.load_dotenv()
 
 app = Flask(__name__)
-CORS(app, origins=os.getenv("ORIGINS").split(","))
+origins = os.getenv("ORIGINS")
+if not origins:
+    origins = ""
+    raise ValueError("ORIGINS environment variable is not set")
+
+CORS(app, origins=origins.split(","))
 data_store = DataStore()
 
 @app.route('/about')
