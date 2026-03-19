@@ -6,9 +6,9 @@ import dotenv
 dotenv.load_dotenv()
 
 app = Flask(__name__)
-origins = os.getenv("ORIGINS")
+origins = os.getenv("ORIGINS","")
+print("ORIGINS:", os.getenv("ORIGINS"))
 if not origins:
-    origins = ""
     raise ValueError("ORIGINS environment variable is not set")
 
 CORS(app, origins=origins.split(","))
